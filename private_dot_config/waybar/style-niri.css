@@ -1,0 +1,219 @@
+* {
+    font-family: "DepartureMono Nerd Font", "Hack Nerd Font";
+    font-size: 16px;
+    color: #1e1e2e;
+    transition: 0.1s ease-in-out;
+    border: none;
+    /* font-weight: bolder; */
+}
+
+/* Base bar background */
+window#waybar {
+    background-color: #1e1e2e;
+    border-radius: 12px;
+}
+
+tooltip label {
+    color: #b4befe;
+}
+
+#tray menu label {
+    color: #b4befe;
+}
+
+/* === Individual Module Styles === */
+
+/* Clock - Sky */
+#clock {
+    background-color: #89dceb;
+}
+
+/* Battery - Green (normal), Yellow (warning), Red (critical) */
+#battery {
+    background-color: #a6e3a1;
+}
+
+#battery.warning:not(.charging) {
+    background-color: #f9e2af;
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f38ba8;
+    color: #1e1e2e;
+    animation: blink 0.5s linear infinite alternate;
+}
+
+#pulseaudio {
+    background-color: #89b4fa;
+}
+
+#pulseaudio.muted {
+    background-color: #f38ba8;
+}
+
+#backlight {
+    background-color: #f9e2af;
+}
+
+#workspaces {
+    background-color: #45475a;
+    margin: 4px 0px;
+    border-radius: 8px;
+}
+
+#workspaces button label {
+    color: #b4befe;
+    padding: 0 4px;
+}
+
+#workspaces button {
+    padding: 2px 6px;
+    border-radius: 8px;
+    background: transparent;
+    min-width: 0px;
+}
+
+#workspaces button.active label {
+    color: #1e1e2e;
+}
+
+#workspaces button.active,
+#workspaces button.focused {
+    background-color: #b4befe;
+    border-radius: 8px;
+    padding: 2 10px;
+    /* font-weight: bold; */
+
+}
+
+#workspaces button:hover {
+    color: rgba(0, 0, 0, 0);
+}
+
+#workspaces button.urgent {
+    background-color: #f38ba8;
+}
+
+#tray,
+#custom-power,
+#battery,
+#custom-clock,
+#custom-notification,
+#clock,
+#backlight,
+/* #custom-clipboard, */
+/* #custom-vkeyboard, */
+#custom-notification.notification,
+#custom-notification.dnd-none,
+#custom-notification.dnd-notification,
+#idle_inhibitor,
+#privacy,
+#mpris,
+#pulseaudio {
+    padding: 6px 12px;
+    margin: 6px 3px;
+    border-radius: 4px;
+}
+
+#mpris {
+    margin: 6px;
+}
+
+#idle_inhibitor,
+#custom-power {
+    padding: 6px 16px 6px 12px;
+}
+
+#custom-clipboard {
+    border-radius: 4px;
+}
+
+/* Tray - Flamingo */
+#tray {
+    background-color: #f2cdcd;
+}
+
+/* Custom Power - Red */
+#custom-power {
+    background-color: #f38ba8;
+}
+
+/* Custom Clipboard - Pink */
+/* #custom-clipboard { */
+/*     background-color: #f5c2e7; */
+/*     border-radius: 10px; */
+/* } */
+
+/* Custom Notification - Mauve */
+#custom-notification {
+    background-color: #cba6f7;
+}
+
+/* Custom VKeyboard - Teal */
+/* #custom-vkeyboard { */
+/*     background-color: #94e2d5; */
+/*     border-radius: 10px; */
+/*     font-size: 14; */
+/* } */
+
+/* Privacy - Maroon */
+#privacy {
+    background-color: #eba0ac;
+}
+
+#privacy-item.audio-out {
+    color: #1e1e2e;
+}
+
+/* Idle Inhibitor - Rosewater */
+#idle_inhibitor {
+    background-color: #f5e0dc;
+}
+
+/* MPRIS - Sapphire */
+#mpris {
+    background-color: #74c7ec;
+}
+
+/* #custom-notification.dnd-none { */
+/*     padding-left: 7px; */
+/*     padding-right: 13px; */
+/* } */
+/**/
+
+#custom-notification.dnd-notification {
+    padding-left: 8px;
+    padding-right: 7px;
+}
+
+/**/
+/* #custom-notification.notification { */
+/*     padding-left: 8px; */
+/*     padding-right: 7px; */
+/* } */
+
+/* Hover effect for all modules */
+#clock:hover,
+#battery:hover,
+#pulseaudio:hover,
+#backlight:hover,
+#tray:hover,
+#workspaces:hover,
+#custom-power:hover,
+#custom-clipboard:hover,
+#custom-notification:hover,
+#custom-vkeyboard:hover,
+#privacy:hover,
+#idle_inhibitor:hover,
+#mpris:hover {
+    transition: all 0.2s ease-in;
+    /* text-shadow: 0 0 1px #1e1e2e; */
+    /* filter: brightness(1.1); */
+}
+
+/* Blinking critical battery */
+@keyframes blink {
+    to {
+        color: #1e1e2e;
+    }
+}

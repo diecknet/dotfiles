@@ -1,0 +1,183 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "height": 36,
+    "reload_style_on_change": true,
+    "spacing": 0,
+    "modules-left": [
+        "niri/workspaces",
+        "mpris"
+    ],
+    "modules-center": [
+    ],
+    "modules-right": [
+        "privacy",
+        "idle_inhibitor",
+        "pulseaudio",
+        "backlight",
+        "battery",
+        "tray",
+        "custom/power",
+        "custom/notification","RobotoMono Nerd Font Propo","RobotoMono Nerd Font Mono",
+        "clock"
+    ],
+    "niri/workspaces": {
+        "format": "{icon}"
+    },
+    "mpris": {
+        "player-icons": {
+            "default": "🎵"
+        },
+        "format": "⏸ {dynamic}",
+        "format-paused": "▶ {dynamic}",
+        "format-stopped": "⏹ Stopped",
+        "interval": 1,
+        "max-length": 70
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰈈",
+            "deactivated": "󰈉"
+        }
+    },
+    "tray": {
+        "spacing": 10
+    },
+    "clock": {
+        "interval": 1,
+        //"timezone": "Europe/Berlin",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%Y-%m-%d %H:%M:%S}",
+        "tooltip": true
+    },
+    "backlight": {
+        "tooltip": false,
+        "format": "{icon} {percent}%",
+        "format-icons": ["☀"],
+        "on-scroll-up": "brightnessctl --exponent=2 set 2%+",
+        "on-scroll-down": "brightnessctl --exponent=2 set 2%-"
+    },
+    "battery": {
+        "states": {
+            "good": 80,
+            "warning": 40,
+            "critical": 20
+        },
+        "format-charging": "↯ {capacity}%",
+        "format": "{icon} {capacity}%",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "interval": 10,
+        "tooltip": true
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "<span font_desc='CommitMono Nerd Font Propo 10'>{icon}</span> {volume}%",
+        "format-bluetooth": "󰂯 {volume}%",
+        "format-bluetooth-muted": "󰂲 {volume}%",
+        "format-muted": "󰝟 {volume}%",
+        "format-source": "󰍬 {volume}%",
+        "format-source-muted": "󰍭",
+        "format-icons": {
+            "headphone": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ --limit 1.0",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05- --limit 1.0",
+        "tooltip": true,
+        "max-volume": 150
+    },
+    "custom/clipboard": {
+        "format": "󰅇",
+        "on-click": "pkill fuzzel || cliphist-fuzzel-img",
+        "tooltip-format": "Clipboard"
+    },
+    "custom/vkeyboard": {
+        "format": "󰌌",
+        "on-click": "pkill wf-osk || wf-osk --height 200 -a bottom",
+        "tooltip-format": "Virtual Keyboard"
+    },
+    "custom/power": {
+        "format": "⏼",
+        "tooltip": false,
+        "on-click": "wlogout -c 15 -b 6 -m 400"
+    },
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 22,
+        "icon-theme": "Numix-Circle",
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "on-click-middle": "close"
+    },
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "󱅫",
+            "none": "󰂚",
+            "dnd-notification": "󱏧<span foreground='#1e1e2e'><sup></sup></span>",
+            "dnd-none": "󱏧",
+            "inhibited-notification": "󰂚<span foreground='#1e1e2e'><sup></sup></span>",
+            "inhibited-none": "󰂚",
+            "dnd-inhibited-notification": "<span foreground='#1e1e2e'><sup></sup></span>",
+            "dnd-inhibited-none": "󱏧"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+    "privacy": {
+        "icon-spacing": 10,
+        "icon-size": 16,
+        "transition-duration": 250,
+        "modules": [
+            {
+                "type": "screenshare",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            },
+            {
+                "type": "audio-out",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            },
+            {
+                "type": "audio-in",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            }
+        ],
+        "ignore-monitor": true,
+        "ignore": [
+            {
+                "type": "audio-in",
+                "name": "cava"
+            },
+            {
+                "type": "screenshare",
+                "name": "obs"
+            }
+        ]
+    },
+    "group/misc": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/clipboard",
+            "custom/vkeyboard"
+        ]
+    }
+}
